@@ -1,3 +1,19 @@
+:root {
+  --bg-color: #ffffff;
+  --secondary-bg: #f5f5f5;
+  --text-color: #222222;
+  --accent: #ff851b;
+  --link-color-light: #555555;
+  --link-color-dark: #ffffff;
+}
+
+body.dark {
+  --bg-color: #111111;
+  --secondary-bg: #222222;
+  --text-color: #ffffff;
+}
+
+/* Navbar container styles */
 nav.navbar {
   padding: 1rem 2rem;
   display: flex;
@@ -7,69 +23,127 @@ nav.navbar {
   top: 0;
   z-index: 1000;
   background-color: var(--secondary-bg);
+  transition: background-color 0.4s ease, color 0.4s ease;
 }
 
+/* Navigation links container */
 .nav-links {
   display: flex;
   gap: 1.5rem;
+  transition: background-color 0.4s ease;
 }
 
 .nav-links a {
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.2s ease;
+  position: relative;
+  transition: color 0.4s ease;
 }
 
+/* Inactive link colors by theme */
+.navbar.light .nav-links a {
+  color: var(--link-color-light);
+}
+.navbar.dark .nav-links a {
+  color: var(--link-color-dark);
+}
+
+/* Active link color */
 .nav-links a.active {
   color: var(--accent);
 }
 
+/* Underline effect for links */
+.nav-links a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -3px;
+  width: 0%;
+  height: 2px;
+  background: var(--accent);
+  transition: width 0.3s ease, background 0.4s ease;
+}
+
+.nav-links a:hover::after,
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* Container for theme toggle and menu button */
 .nav-actions {
   display: flex;
   align-items: center;
   gap: 1rem;
+  position: relative;
+  z-index: 10;
 }
 
-.theme-toggle {
-  background-color: var(--accent);
-  border: none;
+/* Theme toggle and hamburger menu button styles */
+.theme-toggle,
+.menu-toggle {
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
-  padding: 0.6rem;
+  border: none;
   cursor: pointer;
-  font-size: 1.2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease;
+  font-size: 1.8rem;
+  background-color: var(--accent);
+  transition: background-color 0.4s ease, color 0.4s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.theme-toggle:hover {
+.theme-toggle:hover,
+.menu-toggle:hover {
   transform: scale(1.05);
 }
 
-.navbar.light .theme-toggle {
-  color: #222;
+.theme-toggle:active,
+.menu-toggle:active {
+  box-shadow: none;
 }
 
-.navbar.dark .theme-toggle {
+.theme-toggle:focus-visible,
+.menu-toggle:focus-visible {
+  box-shadow: 0 0 0 3px rgba(255, 133, 27, 0.5);
+}
+
+/* Icon styles inside buttons */
+.theme-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease, color 0.4s ease;
+}
+.navbar.light .theme-toggle-icon {
+  color: #222;
+}
+.navbar.dark .theme-toggle-icon {
   color: #fff;
 }
 
-.menu-toggle {
-  display: none;
-  font-size: 2rem;
-  font-weight: bold;
-  background: none;
-  border: none;
-  cursor: pointer;
-  line-height: 1;
-  transition: transform 0.2s ease;
+/* Menu toggle icon colors */
+.navbar.light .menu-toggle-icon {
+  color: #222;
 }
 
+.navbar.dark .menu-toggle-icon {
+  color: #fff;
+}
+
+/* Hamburger menu open state rotation */
 .menu-toggle.open {
   transform: rotate(180deg);
 }
 
+/* Mobile styles for navigation */
 @media (max-width: 768px) {
   .nav-links {
     position: absolute;
@@ -80,10 +154,12 @@ nav.navbar {
     border-radius: 12px;
     overflow: hidden;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-
+    margin-top: 30px;
     max-height: 0;
     opacity: 0;
-    transition: max-height 0.4s ease, opacity 0.4s ease;
+    transition: max-height 0.4s ease, opacity 0.4s ease,
+      background-color 0.4s ease;
+    z-index: 5;
   }
 
   .nav-links.open {
@@ -100,40 +176,4 @@ nav.navbar {
     background: rgba(30, 30, 30, 0.95);
     backdrop-filter: none;
   }
-
-  .menu-toggle {
-    display: block;
-  }
-
-  .navbar.light .nav-links a {
-    color: #222;
-  }
-  .navbar.light .nav-links a:hover {
-    color: var(--accent);
-  }
-  .navbar.dark .nav-links a {
-    color: #f5f5f5;
-  }
-  .navbar.dark .nav-links a:hover {
-    color: var(--accent);
-  }
-}
-
-.nav-links a {
-  position: relative;
-}
-
-.nav-links a::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -3px;
-  width: 0%;
-  height: 2px;
-  background: var(--accent);
-  transition: width 0.3s ease;
-}
-
-.nav-links a:hover::after {
-  width: 100%;
 }

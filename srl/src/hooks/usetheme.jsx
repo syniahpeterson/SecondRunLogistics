@@ -1,3 +1,4 @@
+// Custom hook for theme toggling and persistence
 import { useEffect, useState } from "react";
 
 const useTheme = () => {

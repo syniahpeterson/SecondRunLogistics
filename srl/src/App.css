@@ -1,9 +1,11 @@
 html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 70px;
+  /* Section: HTML styles */
+  scroll-behavior: smooth;
+  scroll-padding-top: 70px;
 }
 
 section {
-    padding: 4rem 2rem;
-    min-height: 100vh;
+  /* Section: Section styles */
+  padding: 4rem 2rem;
+  min-height: 100vh;
 }

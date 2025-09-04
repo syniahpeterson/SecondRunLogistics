@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+// Responsive navigation bar with theme toggle and active section highlighting
+import React, { useState, useEffect } from "react";
 import useTheme from "../hooks/usetheme";
 import "../styles/Navbar.css";
 import { FaSun, FaMoon } from "react-icons/fa";
@@ -8,22 +9,18 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
 
+  // Highlight active section in navbar using Intersection Observer
   useEffect(() => {
     const sections = document.querySelectorAll("section");
-
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveSection(entry.target.id);
-          }
+          if (entry.isIntersecting) setActiveSection(entry.target.id);
         });
       },
       { threshold: 0.6 }
     );
-
     sections.forEach((sec) => observer.observe(sec));
-
     return () => observer.disconnect();
   }, []);
 
@@ -31,7 +28,6 @@ const Navbar = () => {
     <nav className={`navbar ${theme}`}>
       <h1>Second Run Logistics</h1>
 
-      {/* Navigation Links */}
       <div className={`nav-links ${menuOpen ? "open" : ""}`}>
         <a
           href="#hero"
@@ -63,17 +59,20 @@ const Navbar = () => {
         </a>
       </div>
 
-      {/* Actions: Theme + Hamburger */}
       <div className="nav-actions">
+        {/* Theme toggle button */}
         <button className="theme-toggle" onClick={toggleTheme}>
-          {theme === "light" ? <FaMoon /> : <FaSun />}
+          <span className="theme-toggle-icon">
+            {theme === "light" ? <FaMoon /> : <FaSun />}
+          </span>
         </button>
 
+        {/* Hamburger menu button (visible on mobile) */}
         <button
           className={`menu-toggle ${menuOpen ? "open" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
         >
-          {menuOpen ? "–" : "+"}
+          <span className="menu-toggle-icon">{menuOpen ? "–" : "+"}</span>
         </button>
       </div>
     </nav>
