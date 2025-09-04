@@ -1,0 +1,22 @@
+:root {
+  --bg-color: #ffffff;
+  --text-color: #1a1a1a;
+  --secondary-bg: #f7f7f7;
+  --muted-text: #555555;
+  --accent: #ff851b;
+}
+
+body.dark {
+  --bg-color: #121212;
+  --text-color: #ededed;
+  --secondary-bg: #1e1e1e;
+  --muted-text: #a0a0a0;
+  --accent: #ff851b;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  font-family: sans-serif;
+}
