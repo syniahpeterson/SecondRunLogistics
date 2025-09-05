@@ -1,11 +1,19 @@
+/* Enable smooth scrolling and offset for sticky navbar */
 html {
-  /* Section: HTML styles */
   scroll-behavior: smooth;
   scroll-padding-top: 70px;
 }
 
+/* Main section layout */
 section {
-  /* Section: Section styles */
   padding: 4rem 2rem;
   min-height: 100vh;
+}
+
+/* Section divider: gray line between sections */
+.section-divider {
+  height: 1px;
+  background-color: #e0e0e0;
+  width: 80%;
+  margin: 0 auto;
 }

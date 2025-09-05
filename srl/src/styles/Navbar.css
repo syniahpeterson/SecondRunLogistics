@@ -13,7 +13,7 @@ body.dark {
   --text-color: #ffffff;
 }
 
-/* Navbar container styles */
+/* Navbar container */
 nav.navbar {
   padding: 1rem 2rem;
   display: flex;
@@ -26,7 +26,25 @@ nav.navbar {
   transition: background-color 0.4s ease, color 0.4s ease;
 }
 
-/* Navigation links container */
+/* Left side: logo + title */
+.navbar-left {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.navbar-logo {
+  height: 50px;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+nav.navbar h1 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+/* Navigation links */
 .nav-links {
   display: flex;
   gap: 1.5rem;
@@ -40,7 +58,7 @@ nav.navbar {
   transition: color 0.4s ease;
 }
 
-/* Inactive link colors by theme */
+/* Link colors by theme */
 .navbar.light .nav-links a {
   color: var(--link-color-light);
 }
@@ -70,7 +88,7 @@ nav.navbar {
   width: 100%;
 }
 
-/* Container for theme toggle and menu button */
+/* Theme toggle and hamburger menu container */
 .nav-actions {
   display: flex;
   align-items: center;
@@ -79,7 +97,6 @@ nav.navbar {
   z-index: 10;
 }
 
-/* Theme toggle and hamburger menu button styles */
 .theme-toggle,
 .menu-toggle {
   width: 45px;
@@ -92,8 +109,7 @@ nav.navbar {
   justify-content: center;
   font-size: 1.8rem;
   background-color: var(--accent);
-  transition: background-color 0.4s ease, color 0.4s ease, transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: background-color 0.4s ease, color 0.4s ease, transform 0.3s ease;
   outline: none;
   -webkit-tap-highlight-color: transparent;
 }
@@ -103,18 +119,14 @@ nav.navbar {
   transform: scale(1.05);
 }
 
-.theme-toggle:active,
-.menu-toggle:active {
-  box-shadow: none;
-}
-
 .theme-toggle:focus-visible,
 .menu-toggle:focus-visible {
   box-shadow: 0 0 0 3px rgba(255, 133, 27, 0.5);
 }
 
-/* Icon styles inside buttons */
-.theme-toggle-icon {
+/* Icons inside buttons */
+.theme-toggle-icon,
+.menu-toggle-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -122,18 +134,13 @@ nav.navbar {
   height: 100%;
   transition: transform 0.5s ease, color 0.4s ease;
 }
-.navbar.light .theme-toggle-icon {
-  color: #222;
-}
-.navbar.dark .theme-toggle-icon {
-  color: #fff;
-}
 
-/* Menu toggle icon colors */
+/* Icon colors by theme */
+.navbar.light .theme-toggle-icon,
 .navbar.light .menu-toggle-icon {
   color: #222;
 }
-
+.navbar.dark .theme-toggle-icon,
 .navbar.dark .menu-toggle-icon {
   color: #fff;
 }
@@ -143,7 +150,7 @@ nav.navbar {
   transform: rotate(180deg);
 }
 
-/* Mobile styles for navigation */
+/* Mobile menu */
 @media (max-width: 768px) {
   .nav-links {
     position: absolute;
@@ -175,5 +182,16 @@ nav.navbar {
   .navbar.dark .nav-links {
     background: rgba(30, 30, 30, 0.95);
     backdrop-filter: none;
+  }
+}
+
+/* Hide hamburger menu on larger screens */
+.menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: flex;
   }
 }

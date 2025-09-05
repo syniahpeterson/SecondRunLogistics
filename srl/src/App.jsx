@@ -1,4 +1,4 @@
-// Main App component
+// Main application layout with all sections and navigation
 import React from "react";
 import "./App.css";
 import Navbar from "./components/Navbar.jsx";
@@ -11,11 +11,21 @@ import Footer from "./components/Footer.jsx";
 function App() {
   return (
     <>
+      {/* Navigation bar */}
       <Navbar />
+      {/* Hero/landing section */}
       <Hero />
+      <div className="section-divider"></div>
+      {/* About section */}
       <About />
+      <div className="section-divider"></div>
+      {/* Services section */}
       <Services />
+      <div className="section-divider"></div>
+      {/* Contact section */}
       <Contact />
+      <div className="section-divider"></div>
+      {/* Footer */}
       <Footer />
     </>
   );

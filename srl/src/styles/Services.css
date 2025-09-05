@@ -1,8 +1,138 @@
-#services {
-  height: 100vh;
-  border: 4px solid yellow;
+.services-section {
+  /* Main container for Services section */
+  padding: 2rem 2rem 4rem;
+  text-align: center;
+  background: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+.services-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--accent);
+}
+
+.services-intro {
+  /* Introductory text */
+  font-size: 1.1rem;
+  color: var(--text-color);
+  margin-bottom: 3rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.services-grid {
+  /* Grid layout for service cards */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .services-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.service-card {
+  /* Individual service card */
+  background: var(--card-bg, #fff);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  text-align: left;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease,
+    background 0.3s ease;
+  opacity: 0;
+  transform: translateY(40px);
   display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 4px;
+  flex-direction: column;
+  justify-content: flex-start;
+  border: 1px solid transparent;
+}
+
+.service-card.show {
+  /* Show card with animation */
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 6px 18px rgba(255, 165, 0, 0.4);
+  border: 1px solid #ff851b;
+}
+
+.service-card img {
+  /* Service image */
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 1rem;
+}
+
+.service-card h3 {
+  font-size: 1.4rem;
+  margin-bottom: 0.75rem;
+  color: var(--accent);
+}
+
+.service-card p {
+  font-size: 1rem;
+  color: var(--text-color);
+  line-height: 1.5;
+  flex-grow: 1;
+}
+
+/* Call-to-action button with floating animation */
+.services-cta {
+  display: inline-block;
+  margin-top: 3rem;
+  padding: 0.9rem 2rem;
+  background: var(--accent);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+  animation: floatButton 4s ease-in-out infinite;
+}
+
+.services-cta:hover {
+  background: #e67e00;
+  transform: scale(1.05);
+}
+
+@keyframes floatButton {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+:root[data-theme="light"],
+html[data-theme="light"],
+body[data-theme="light"] {
+  --card-bg: #fff;
+}
+
+:root[data-theme="dark"],
+html[data-theme="dark"],
+body[data-theme="dark"],
+.dark {
+  --card-bg: #1a1a1a;
 }

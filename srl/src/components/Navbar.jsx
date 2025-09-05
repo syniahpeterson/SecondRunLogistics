@@ -1,8 +1,9 @@
-// Responsive navigation bar with theme toggle and active section highlighting
+// Responsive navigation bar with theme toggle, logo, and active section highlighting
 import React, { useState, useEffect } from "react";
 import useTheme from "../hooks/usetheme";
 import "../styles/Navbar.css";
 import { FaSun, FaMoon } from "react-icons/fa";
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
   const { theme, toggleTheme } = useTheme();
@@ -26,8 +27,19 @@ const Navbar = () => {
 
   return (
     <nav className={`navbar ${theme}`}>
-      <h1>Second Run Logistics</h1>
+      {/* Logo and site title */}
+      <div className="navbar-left">
+        <a href="#hero">
+          <img
+            src={logo}
+            alt="Second Run Logistics Logo"
+            className="navbar-logo"
+          />
+        </a>
+        <h1>Second Run Logistics</h1>
+      </div>
 
+      {/* Navigation links */}
       <div className={`nav-links ${menuOpen ? "open" : ""}`}>
         <a
           href="#hero"
@@ -59,15 +71,13 @@ const Navbar = () => {
         </a>
       </div>
 
+      {/* Theme toggle and hamburger menu */}
       <div className="nav-actions">
-        {/* Theme toggle button */}
         <button className="theme-toggle" onClick={toggleTheme}>
           <span className="theme-toggle-icon">
             {theme === "light" ? <FaMoon /> : <FaSun />}
           </span>
         </button>
-
-        {/* Hamburger menu button (visible on mobile) */}
         <button
           className={`menu-toggle ${menuOpen ? "open" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
