@@ -1,6 +1,11 @@
 // Services section with animated cards and CTA
 import React, { useEffect, useRef } from "react";
 import "../styles/Services.css";
+import ltl from "../assets/LTL.png"
+import ftl from "../assets/FTL.png"
+import expedited from "../assets/expedited.jpg"
+import intermodal from "../assets/intermodal.png"
+import whiteglove from "../assets/white-glove.jpg"
 
 // List of services to display
 const servicesData = [
@@ -8,31 +13,31 @@ const servicesData = [
     title: "Less Than Truckload (LTL)",
     description:
       "Affordable and flexible shipping for smaller loads. Whether it’s one pallet or several, our LTL service offers fast transit times, real-time tracking, and reliable door-to-door delivery.",
-    img: "/src/assets/LTL.png",
+    img: ltl,
   },
   {
     title: "Full Truckload (FTL)",
     description:
       "Perfect for large shipments, our FTL service gives you the entire truck for direct, nonstop transportation. Enjoy faster transit, dedicated capacity, and full control over your delivery.",
-    img: "/src/assets/FTL.png",
+    img: ftl,
   },
   {
     title: "Expedited Truckload (ETL)",
     description:
       "When time is critical, our expedited service ensures fast, reliable delivery with dedicated trucks and prioritized routes. Get your freight where it needs to be — on time, every time.",
-    img: "/src/assets/expedited.jpg",
+    img: expedited,
   },
   {
     title: "Intermodal Shipping",
     description:
       "A cost-effective, eco-friendly solution that combines rail and truck transport. Intermodal shipping reduces costs, increases reliability, and streamlines long-distance freight movement.",
-    img: "/src/assets/intermodal.png",
+    img: intermodal,
   },
   {
     title: "White-Glove Service",
     description:
       "Premium shipping for fragile, high-value, or specialized items. Our trained professionals provide careful handling, inside delivery, and setup for a worry-free experience.",
-    img: "/src/assets/white-glove.jpg",
+    img: whiteglove,
   },
 ];
 
