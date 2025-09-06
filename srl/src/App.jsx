@@ -15,7 +15,6 @@ function App() {
       <Navbar />
       {/* Hero/landing section */}
       <Hero />
-      <div className="section-divider"></div>
       {/* About section */}
       <About />
       <div className="section-divider"></div>
@@ -24,7 +23,6 @@ function App() {
       <div className="section-divider"></div>
       {/* Contact section */}
       <Contact />
-      <div className="section-divider"></div>
       {/* Footer */}
       <Footer />
     </>
