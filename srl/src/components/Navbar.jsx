@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import useTheme from "../hooks/usetheme";
 import "../styles/Navbar.css";
-import { FaSun, FaMoon } from "react-icons/fa";
+import { FaTruckMoving } from "react-icons/fa";
 import logo from "../assets/logo.png";
 
 const Navbar = () => {
@@ -75,7 +75,7 @@ const Navbar = () => {
       <div className="nav-actions">
         <button className="theme-toggle" onClick={toggleTheme}>
           <span className="theme-toggle-icon">
-            {theme === "light" ? <FaMoon /> : <FaSun />}
+            <FaTruckMoving />
           </span>
         </button>
         <button
