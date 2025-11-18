@@ -18,7 +18,7 @@ const Footer = () => {
         <div className="footer-info">
           <p>
             <strong>Phone:</strong>{" "}
-            <a href="tel:+13477696906">(347) 769-6906</a> or{" "}
+            <a href="tel:+13479793242">(347) 979-3242</a> or{" "}
             <a href="tel:+13479276162">(347) 927-6162</a>
           </p>
           <p>
