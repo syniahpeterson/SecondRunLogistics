@@ -14,15 +14,15 @@ I designed and developed the website from the ground up, translating the client'
 
 The project focused on:
 
-* Responsive web design
-* Component-based React development
-* Reusable UI components
-* Mobile-friendly navigation
-* Custom visual branding
-* Contact form integration
-* User-focused information architecture
-* Cross-device usability
-* Production deployment and maintenance
+- Responsive web design
+- Component-based React development
+- Reusable UI components
+- Mobile-friendly navigation
+- Custom visual branding
+- Contact form integration
+- User-focused information architecture
+- Cross-device usability
+- Production deployment and maintenance
 
 The repository is organized as a Vite-powered React application with dedicated components, sections, hooks, assets, and styling.
 
@@ -32,25 +32,25 @@ The repository is organized as a Vite-powered React application with dedicated c
 
 ### 🏠 Business Homepage
 
-* Clear company introduction
-* Service-focused content
-* Calls to action
-* Responsive layout
-* Custom company branding
+- Clear company introduction
+- Service-focused content
+- Calls to action
+- Responsive layout
+- Custom company branding
 
 ### 🚛 Services
 
-* Structured presentation of logistics services
-* Easy-to-scan service information
-* Responsive service sections
-* Reusable content components
+- Structured presentation of logistics services
+- Easy-to-scan service information
+- Responsive service sections
+- Reusable content components
 
 ### 📱 Responsive Navigation
 
-* Mobile-friendly navigation
-* Responsive layouts across viewport sizes
-* Reusable navigation components
-* Optimized user experience across desktop and mobile
+- Mobile-friendly navigation
+- Responsive layouts across viewport sizes
+- Reusable navigation components
+- Optimized user experience across desktop and mobile
 
 ### 📩 Contact Integration
 
@@ -64,11 +64,11 @@ The project uses the `@emailjs/browser` package for client-side email functional
 
 The project includes a custom visual identity developed specifically for the business, including:
 
-* Custom logo
-* Brand color palette
-* Typography
-* Consistent UI styling
-* Branded visual elements
+- Custom logo
+- Brand color palette
+- Typography
+- Consistent UI styling
+- Branded visual elements
 
 ---
 
@@ -76,31 +76,31 @@ The project includes a custom visual identity developed specifically for the bus
 
 ### Frontend
 
-* **React 19**
-* **JavaScript (ES6+)**
-* **HTML5**
-* **CSS3**
-* **Vite**
+- **React 19**
+- **JavaScript (ES6+)**
+- **HTML5**
+- **CSS3**
+- **Vite**
 
 ### UI & Development
 
-* **React Icons**
-* **Reusable React Components**
-* **Custom CSS**
-* **Responsive Design**
-* **Mobile-First Development**
+- **React Icons**
+- **Reusable React Components**
+- **Custom CSS**
+- **Responsive Design**
+- **Mobile-First Development**
 
 ### Integrations
 
-* **EmailJS**
+- **EmailJS**
 
 ### Deployment & Version Control
 
-* **Git**
-* **GitHub**
-* **GitHub Pages**
+- **Git**
+- **GitHub**
+- **Vercel**
 
-The current project configuration includes React 19, Vite, React Icons, EmailJS, ESLint, and GitHub Pages deployment tooling.
+The current project configuration includes React 19, Vite, React Icons, EmailJS, ESLint, and Vercel deployment.
 
 ---
 
@@ -144,15 +144,15 @@ This organization allows reusable components and sections to remain separate fro
 
 The primary goals of the project were to:
 
-* Build a professional business website from scratch
-* Translate client requirements into a functional web experience
-* Create a responsive interface for desktop and mobile users
-* Develop reusable React components
-* Establish a consistent visual identity
-* Improve the presentation of business services
-* Provide an accessible contact pathway
-* Maintain a clean and scalable frontend structure
-* Deploy and maintain the production website
+- Build a professional business website from scratch
+- Translate client requirements into a functional web experience
+- Create a responsive interface for desktop and mobile users
+- Develop reusable React components
+- Establish a consistent visual identity
+- Improve the presentation of business services
+- Provide an accessible contact pathway
+- Maintain a clean and scalable frontend structure
+- Deploy and maintain the production website
 
 ---
 
@@ -162,10 +162,10 @@ The website was designed with responsive behavior as a core requirement.
 
 The interface adapts to:
 
-* 📱 Mobile devices
-* 📱 Tablets
-* 💻 Laptops
-* 🖥️ Desktop displays
+- 📱 Mobile devices
+- 📱 Tablets
+- 💻 Laptops
+- 🖥️ Desktop displays
 
 Responsive layouts, navigation, typography, spacing, and content sections were implemented to provide a consistent experience across different screen sizes.
 
@@ -177,14 +177,14 @@ Accessibility and usability considerations were incorporated throughout the proj
 
 Key considerations include:
 
-* Semantic HTML
-* Clear content hierarchy
-* Responsive navigation
-* Readable typography
-* Accessible interactive elements
-* Mobile-friendly layouts
-* Clear calls to action
-* User-focused information organization
+- Semantic HTML
+- Clear content hierarchy
+- Responsive navigation
+- Readable typography
+- Accessible interactive elements
+- Mobile-friendly layouts
+- Clear calls to action
+- User-focused information organization
 
 The goal was to make important business information and contact options easy to discover and use.
 
@@ -198,11 +198,11 @@ The integration allows visitors to submit inquiries through the website while ro
 
 This demonstrates experience working with:
 
-* Third-party APIs/services
-* Client-side integrations
-* Form handling
-* User input
-* Asynchronous communication workflows
+- Third-party APIs/services
+- Client-side integrations
+- Form handling
+- User input
+- Asynchronous communication workflows
 
 The EmailJS browser package is included as a project dependency.
 
@@ -214,11 +214,11 @@ In addition to frontend development, I created a custom visual identity for the 
 
 This included:
 
-* Logo design
-* Color selection
-* Typography choices
-* UI styling
-* Visual consistency across website sections
+- Logo design
+- Color selection
+- Typography choices
+- UI styling
+- Visual consistency across website sections
 
 The branding was incorporated directly into the frontend so the website maintained a cohesive appearance throughout the user experience.
 
@@ -230,9 +230,9 @@ The branding was incorporated directly into the frontend so the website maintain
 
 Make sure you have installed:
 
-* [Node.js](https://nodejs.org/)
-* npm
-* Git
+- [Node.js](https://nodejs.org/)
+- npm
+- Git
 
 ### Clone the Repository
 
@@ -288,15 +288,15 @@ npm run preview
 
 Previews the production build locally.
 
-### Deploy
+### Deploy with Vercel
 
-```bash
-npm run deploy
-```
+Deploy the `srl` directory from the Vercel dashboard or Vercel CLI. Vercel detects the Vite project automatically.
 
-Builds and deploys the application using GitHub Pages.
+Recommended Vercel settings:
 
-The project's `package.json` includes dedicated development, production build, preview, pre-deployment, and GitHub Pages deployment scripts.
+- **Root Directory:** `srl`
+- **Build Command:** `npm run build`
+- **Output Directory:** `dist`
 
 ---
 
@@ -304,16 +304,16 @@ The project's `package.json` includes dedicated development, production build, p
 
 Potential future enhancements include:
 
-* CMS integration for easier content management
-* Advanced contact form validation
-* Automated frontend testing
-* Analytics integration
-* Enhanced SEO structured data
-* Performance optimization
-* Customer inquiry management
-* Additional service pages
-* Online quote request functionality
-* Improved image optimization
+- CMS integration for easier content management
+- Advanced contact form validation
+- Automated frontend testing
+- Analytics integration
+- Enhanced SEO structured data
+- Performance optimization
+- Customer inquiry management
+- Additional service pages
+- Online quote request functionality
+- Improved image optimization
 
 ---
 
@@ -323,35 +323,35 @@ This project demonstrates my ability to take a business requirement and turn it 
 
 ### Frontend Development
 
-* React
-* JavaScript
-* HTML5
-* CSS3
-* Responsive Design
-* Component-Based Architecture
+- React
+- JavaScript
+- HTML5
+- CSS3
+- Responsive Design
+- Component-Based Architecture
 
 ### User Experience
 
-* Information Architecture
-* Mobile-First Design
-* Accessibility
-* UI Development
-* Responsive Navigation
+- Information Architecture
+- Mobile-First Design
+- Accessibility
+- UI Development
+- Responsive Navigation
 
 ### Integrations
 
-* EmailJS
-* Third-Party API/Service Integration
-* Contact Form Workflows
+- EmailJS
+- Third-Party API/Service Integration
+- Contact Form Workflows
 
 ### Professional Development
 
-* Client Collaboration
-* Custom Branding
-* Git/GitHub
-* Production Deployment
-* Post-Launch Updates
-* Website Maintenance
+- Client Collaboration
+- Custom Branding
+- Git/GitHub
+- Production Deployment
+- Post-Launch Updates
+- Website Maintenance
 
 ---
 
@@ -363,9 +363,9 @@ This project demonstrates my ability to take a business requirement and turn it 
 
 I build responsive, accessible, and user-focused web experiences using modern frontend technologies.
 
-* 🌐 Portfolio: https://syniahpeterson.dev
-* 💼 LinkedIn: https://linkedin.com/in/syniahpeterson
-* 💻 GitHub: https://github.com/syniahpeterson
+- 🌐 Portfolio: https://syniahpeterson.dev
+- 💼 LinkedIn: https://linkedin.com/in/syniahpeterson
+- 💻 GitHub: https://github.com/syniahpeterson
 
 ---
 
