@@ -7,20 +7,33 @@ const Navbar = () => {
   const [activeSection, setActiveSection] = useState("hero");
 
   useEffect(() => {
-    const sections = document.querySelectorAll("section");
-    // Use a narrow viewport band so the section being read becomes active.
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const activeEntry = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    let frameId = 0;
 
-        if (activeEntry) setActiveSection(activeEntry.target.id);
-      },
-      { rootMargin: "-20% 0px -65% 0px", threshold: [0, 0.25, 0.5] },
-    );
-    sections.forEach((sec) => observer.observe(sec));
-    return () => observer.disconnect();
+    const updateActiveSection = () => {
+      frameId = 0;
+      const marker =
+        window.scrollY + document.querySelector("nav").offsetHeight + 24;
+      const sections = [...document.querySelectorAll("section")];
+      const currentSection = sections
+        .filter((section) => section.offsetTop <= marker)
+        .sort((a, b) => b.offsetTop - a.offsetTop)[0];
+
+      if (currentSection) setActiveSection(currentSection.id);
+    };
+
+    const handleScroll = () => {
+      if (!frameId) frameId = window.requestAnimationFrame(updateActiveSection);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("resize", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleScroll);
+      if (frameId) window.cancelAnimationFrame(frameId);
+    };
   }, []);
 
   return (
