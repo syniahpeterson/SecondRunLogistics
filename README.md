@@ -298,6 +298,18 @@ Recommended Vercel settings:
 - **Build Command:** `npm run build`
 - **Output Directory:** `dist`
 
+### EmailJS on Vercel
+
+Add these environment variables in Vercel under **Project Settings > Environment Variables** for Production, Preview, and Development:
+
+```text
+VITE_EMAILJS_SERVICE_ID
+VITE_EMAILJS_TEMPLATE_ID
+VITE_EMAILJS_PUBLIC_KEY
+```
+
+Use the values from `srl/.env.example`, then redeploy. In EmailJS, allow the deployed domains `https://secondrunlogistics.com` and `https://www.secondrunlogistics.com` under the service security settings.
+
 ---
 
 ## 🔮 Future Improvements

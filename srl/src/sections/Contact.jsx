@@ -1,6 +1,12 @@
 import React, { useRef, useEffect, useState } from "react";
 import "../styles/Contact.css";
 
+const emailJsConfig = {
+  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_tk9zeu5",
+  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_ang9heb",
+  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "xNmn0OU3An3Whz3np",
+};
+
 const Contact = () => {
   const form = useRef();
   const [status, setStatus] = useState("");
@@ -27,10 +33,10 @@ const Contact = () => {
     import("@emailjs/browser")
       .then(({ default: emailjs }) =>
         emailjs.sendForm(
-          "service_tk9zeu5",
-          "template_ang9heb",
+          emailJsConfig.serviceId,
+          emailJsConfig.templateId,
           form.current,
-          "xNmn0OU3An3Whz3np",
+          emailJsConfig.publicKey,
         ),
       )
       .then(() => {
