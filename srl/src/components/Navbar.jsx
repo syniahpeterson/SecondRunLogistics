@@ -1,46 +1,49 @@
-// Responsive navigation bar with theme toggle, logo, and active section highlighting
 import React, { useState, useEffect } from "react";
-import useTheme from "../hooks/usetheme";
 import "../styles/Navbar.css";
-import { FaTruckMoving } from "react-icons/fa";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo.webp";
 
 const Navbar = () => {
-  const { theme, toggleTheme } = useTheme();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
 
-  // Highlight active section in navbar using Intersection Observer
   useEffect(() => {
     const sections = document.querySelectorAll("section");
+    // Use a narrow viewport band so the section being read becomes active.
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) setActiveSection(entry.target.id);
-        });
+        const activeEntry = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (activeEntry) setActiveSection(activeEntry.target.id);
       },
-      { threshold: 0.6 }
+      { rootMargin: "-20% 0px -65% 0px", threshold: [0, 0.25, 0.5] },
     );
     sections.forEach((sec) => observer.observe(sec));
     return () => observer.disconnect();
   }, []);
 
   return (
-    <nav className={`navbar ${theme}`}>
-      {/* Logo and site title */}
+    <nav className="navbar" aria-label="Primary navigation">
       <div className="navbar-left">
         <a href="#hero">
           <img
             src={logo}
             alt="Second Run Logistics Logo"
             className="navbar-logo"
+            width="512"
+            height="512"
           />
         </a>
-        <h1>Second Run Logistics</h1>
+        <a className="navbar-title" href="#hero">
+          <span className="navbar-title-text">Second Run Logistics</span>
+        </a>
       </div>
 
-      {/* Navigation links */}
-      <div className={`nav-links ${menuOpen ? "open" : ""}`}>
+      <div
+        id="primary-navigation"
+        className={`nav-links ${menuOpen ? "open" : ""}`}
+      >
         <a
           href="#hero"
           className={activeSection === "hero" ? "active" : ""}
@@ -71,16 +74,16 @@ const Navbar = () => {
         </a>
       </div>
 
-      {/* Theme toggle and hamburger menu */}
       <div className="nav-actions">
-        <button className="theme-toggle" onClick={toggleTheme}>
-          <span className="theme-toggle-icon">
-            <FaTruckMoving />
-          </span>
-        </button>
         <button
+          type="button"
           className={`menu-toggle ${menuOpen ? "open" : ""}`}
           onClick={() => setMenuOpen(!menuOpen)}
+          aria-label={
+            menuOpen ? "Close navigation menu" : "Open navigation menu"
+          }
+          aria-expanded={menuOpen}
+          aria-controls="primary-navigation"
         >
           <span className="menu-toggle-icon">{menuOpen ? "–" : "+"}</span>
         </button>

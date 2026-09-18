@@ -1,68 +1,92 @@
 import React, { useRef, useEffect, useState } from "react";
-import emailjs from "@emailjs/browser";
 import "../styles/Contact.css";
 
 const Contact = () => {
   const form = useRef();
   const [status, setStatus] = useState("");
   const [visible, setVisible] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   useEffect(() => {
-    // Fade in when scrolled into view
-    const onScroll = () => {
-      const section = document.getElementById("contact");
-      if (
-        section &&
-        section.getBoundingClientRect().top < window.innerHeight - 100
-      ) {
-        setVisible(true);
-      }
-    };
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
+    const section = document.getElementById("contact");
+    if (!section) return undefined;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => setVisible(entry.isIntersecting),
+      { threshold: 0.2 },
+    );
+
+    observer.observe(section);
+    return () => observer.disconnect();
   }, []);
 
   const sendEmail = (e) => {
     e.preventDefault();
+    setIsSending(true);
 
-    emailjs
-      .sendForm(
-        "service_tk9zeu5",
-        "template_ang9heb",
-        form.current,
-        "xNmn0OU3An3Whz3np"
+    import("@emailjs/browser")
+      .then(({ default: emailjs }) =>
+        emailjs.sendForm(
+          "service_tk9zeu5",
+          "template_ang9heb",
+          form.current,
+          "xNmn0OU3An3Whz3np",
+        ),
       )
-      .then(
-        () => {
-          setStatus("✅ Message sent successfully!");
-          form.current.reset();
-        },
-        (error) => {
-          setStatus("❌ Failed to send. Try again.");
-          console.error(error.text);
-        }
-      );
+      .then(() => {
+        setStatus("✅ Message sent successfully!");
+        form.current.reset();
+      })
+      .catch((error) => {
+        setStatus("❌ Failed to send. Try again.");
+        console.error(error.text);
+      })
+      .finally(() => setIsSending(false));
   };
 
   return (
     <section
       id="contact"
-      className={`contact-section ${visible ? "fade-in" : ""}`}
+      className={`contact-section ${visible ? "is-visible" : ""}`}
     >
-      <h2 className="contact-title">Contact Us</h2>
-      <form ref={form} onSubmit={sendEmail} className="contact-form">
-        <input type="text" name="user_name" placeholder="Your Name" required />
+      <h2>Contact Us</h2>
+      <form
+        ref={form}
+        onSubmit={sendEmail}
+        className="contact-form"
+        aria-busy={isSending}
+      >
+        <label htmlFor="user-name">Your Name</label>
         <input
+          id="user-name"
+          type="text"
+          name="user_name"
+          placeholder="Your Name"
+          required
+        />
+        <label htmlFor="user-email">Your Email</label>
+        <input
+          id="user-email"
           type="email"
           name="user_email"
           placeholder="Your Email"
           required
         />
-        <textarea name="message" placeholder="Your Message" required />
-        <button type="submit" className="contact-btn">
+        <label htmlFor="message">Your Message</label>
+        <textarea
+          id="message"
+          name="message"
+          placeholder="Your Message"
+          required
+        />
+        <button type="submit" className="contact-btn" disabled={isSending}>
           Send
         </button>
-        {status && <p className="status">{status}</p>}
+        {status && (
+          <p className="status" aria-live="polite">
+            {status}
+          </p>
+        )}
       </form>
     </section>
   );

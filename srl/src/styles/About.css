@@ -1,110 +1,92 @@
 .about-section {
-  /* Main container for About section */
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(420px, 1.15fr);
   align-items: center;
-  gap: 2rem;
-  padding: 2rem 1.5rem;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.4s ease, color 0.4s ease;
-  flex-wrap: wrap;
-  margin-top: 0;
+  gap: clamp(2rem, 5vw, 5rem);
+  max-width: 1400px;
+  margin: 0 auto;
 }
-
 .about-text {
-  /* Text content area */
-  flex: 1 1 50%;
-  max-width: 500px;
+  max-width: 650px;
 }
-
-.about-text h2 {
-  font-size: 2rem;
+.about-text h2,
+.services-section h2,
+.contact-section h2 {
+  margin: 0 0 1.3rem;
+  color: var(--text-color);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.about-text h2::before,
+.services-section h2::before,
+.contact-section h2::before {
+  display: block;
   margin-bottom: 1rem;
-  color: var(--accent);
+  color: var(--highlight);
+  content: "//";
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
 }
-
 .about-text p {
-  margin-bottom: 1rem;
-  line-height: 1.6;
+  margin: 0 0 1.25rem;
+  color: var(--muted-text);
+  font-size: 1.03rem;
 }
-
-/* Call-to-action button with floating animation */
-.about-cta {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 0.75rem 1.5rem;
-  background-color: var(--accent);
-  color: #fff;
-  border-radius: 6px;
-  text-decoration: none;
+.about-subtitle {
+  margin-top: -0.35rem !important;
+  color: var(--accent-soft) !important;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.2rem, 2vw, 1.5rem) !important;
   font-weight: 600;
-  transition: transform 0.3s ease, background-color 0.3s ease;
-  animation: floatButton 4s ease-in-out infinite;
+  line-height: 1.2;
 }
-
-.about-cta:hover {
-  transform: scale(1.05);
-  background-color: #e06f1b;
+.about-text strong {
+  color: var(--text-color);
+  font-weight: 600;
 }
-
-@keyframes floatButton {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
-  }
+.about-text em {
+  color: var(--accent-soft);
 }
-
-/* Images */
+.about-closing {
+  color: var(--highlight) !important;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 600;
+}
+.about-cta {
+  margin-top: 1rem;
+}
 .about-images {
-  /* Images container */
-  flex: 1 1 40%;
-  max-width: 400px;
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-  align-items: flex-end;
-  padding-right: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  align-items: end;
 }
-
 .about-image-wrapper {
-  /* Image wrapper with pulsing border animation */
-  position: relative;
-  border: 3px solid #ff851b;
-  border-radius: 12px;
   overflow: hidden;
-  animation: pulseBorder 6s ease-in-out infinite;
+  border: 1px solid var(--line);
+  border-radius: 14px;
 }
-
+.about-image-wrapper:nth-child(2) {
+  transform: translateY(3rem);
+}
 .about-image-wrapper img {
   display: block;
   width: 100%;
-  max-width: 250px;
-  border-radius: 10px;
-  object-fit: cover;
+  height: auto;
+  aspect-ratio: auto;
+  transition: transform 0.4s ease;
 }
-
-@keyframes pulseBorder {
-  0%,
-  100% {
-    border-color: rgba(255, 133, 27, 0.6);
-  }
-  50% {
-    border-color: rgba(255, 133, 27, 1);
-  }
+.about-image-wrapper:hover img {
+  transform: scale(1.05);
 }
-
-/* Responsive styles for About section */
 @media (max-width: 768px) {
   .about-section {
-    flex-direction: column;
-    text-align: center;
+    grid-template-columns: 1fr;
   }
   .about-images {
-    align-items: center;
-    padding-right: 0;
+    width: 100%;
   }
 }

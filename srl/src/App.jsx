@@ -1,30 +1,41 @@
-// Main application layout with all sections and navigation
-import React from "react";
+import { lazy, Suspense } from "react";
+import { FaTruckMoving } from "react-icons/fa";
 import "./App.css";
 import Navbar from "./components/Navbar.jsx";
 import Hero from "./sections/Hero.jsx";
-import About from "./sections/About.jsx";
-import Services from "./sections/Services.jsx";
-import Contact from "./sections/Contact.jsx";
-import Footer from "./components/Footer.jsx";
+
+const Services = lazy(() => import("./sections/Services.jsx"));
+const About = lazy(() => import("./sections/About.jsx"));
+const Contact = lazy(() => import("./sections/Contact.jsx"));
+const Footer = lazy(() => import("./components/Footer.jsx"));
 
 function App() {
   return (
     <>
-      {/* Navigation bar */}
       <Navbar />
-      {/* Hero/landing section */}
       <Hero />
-      {/* About section */}
-      <About />
-      <div className="section-divider"></div>
-      {/* Services section */}
-      <Services />
-      <div className="section-divider"></div>
-      {/* Contact section */}
-      <Contact />
-      {/* Footer */}
-      <Footer />
+      <Suspense fallback={null}>
+        <About />
+      </Suspense>
+      <div className="section-divider" aria-hidden="true">
+        <span>
+          <FaTruckMoving />
+        </span>
+      </div>
+      <Suspense fallback={null}>
+        <Services />
+      </Suspense>
+      <div className="section-divider" aria-hidden="true">
+        <span>
+          <FaTruckMoving />
+        </span>
+      </div>
+      <Suspense fallback={null}>
+        <Contact />
+      </Suspense>
+      <Suspense fallback={null}>
+        <Footer />
+      </Suspense>
     </>
   );
 }

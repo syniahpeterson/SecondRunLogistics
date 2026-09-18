@@ -1,51 +1,12 @@
-// Services section with animated cards and CTA
 import React, { useEffect, useRef } from "react";
 import "../styles/Services.css";
-import ltl from "../assets/LTL.png"
-import ftl from "../assets/FTL.png"
-import expedited from "../assets/expedited.jpg"
-import intermodal from "../assets/intermodal.png"
-import whiteglove from "../assets/white-glove.jpg"
-
-// List of services to display
-const servicesData = [
-  {
-    title: "Less Than Truckload (LTL)",
-    description:
-      "Affordable and flexible shipping for smaller loads. Whether it’s one pallet or several, our LTL service offers fast transit times, real-time tracking, and reliable door-to-door delivery.",
-    img: ltl,
-  },
-  {
-    title: "Full Truckload (FTL)",
-    description:
-      "Perfect for large shipments, our FTL service gives you the entire truck for direct, nonstop transportation. Enjoy faster transit, dedicated capacity, and full control over your delivery.",
-    img: ftl,
-  },
-  {
-    title: "Expedited Truckload (ETL)",
-    description:
-      "When time is critical, our expedited service ensures fast, reliable delivery with dedicated trucks and prioritized routes. Get your freight where it needs to be — on time, every time.",
-    img: expedited,
-  },
-  {
-    title: "Intermodal Shipping",
-    description:
-      "A cost-effective, eco-friendly solution that combines rail and truck transport. Intermodal shipping reduces costs, increases reliability, and streamlines long-distance freight movement.",
-    img: intermodal,
-  },
-  {
-    title: "White-Glove Service",
-    description:
-      "Premium shipping for fragile, high-value, or specialized items. Our trained professionals provide careful handling, inside delivery, and setup for a worry-free experience.",
-    img: whiteglove,
-  },
-];
+import servicesData from "../data/services";
 
 const Services = () => {
   const cardsRef = useRef([]);
 
-  // Animate service cards on scroll into view
   useEffect(() => {
+    // Reveal each card once when it enters the viewport.
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -55,7 +16,7 @@ const Services = () => {
           }
         });
       },
-      { threshold: 0.2 }
+      { threshold: 0.2 },
     );
 
     cardsRef.current.forEach((card) => {
@@ -68,26 +29,35 @@ const Services = () => {
   return (
     <section id="services" className="services-section">
       <h2>Our Services</h2>
-      <p className="services-intro">
-        From regional hauls to last-mile delivery, Second Run Logistics is here
-        to handle all your transportation needs.
+      <p className="services-subtitle">
+        Reliable Transportation. Built Around Your Needs.
       </p>
-      {/* Animated service cards */}
+      <p className="services-intro">
+        From local and regional delivery to last-mile and expedited
+        transportation, Second Run Logistics provides dependable solutions to
+        keep your freight moving. We focus on reliable service, clear
+        communication, and getting every shipment where it needs to go.
+      </p>
       <div className="services-grid">
         {servicesData.map((service, index) => (
           <div
             key={index}
             ref={(el) => (cardsRef.current[index] = el)}
-            className="service-card hidden"
-            style={{ animationDelay: `${index * 0.2}s` }}
+            className="service-card"
           >
-            <img src={service.img} alt={service.title} />
+            <img
+              src={service.img}
+              alt={service.alt}
+              width={service.width}
+              height={service.height}
+              loading="lazy"
+              decoding="async"
+            />
             <h3>{service.title}</h3>
             <p>{service.description}</p>
           </div>
         ))}
       </div>
-      {/* Call-to-action button */}
       <a href="#contact" className="services-cta">
         Request a Quote
       </a>

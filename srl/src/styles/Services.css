@@ -1,34 +1,30 @@
 .services-section {
-  /* Main container for Services section */
-  padding: 2rem 2rem 4rem;
+  max-width: 1280px;
+  margin: 0 auto;
   text-align: center;
-  background: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color 0.4s ease, color 0.4s ease;
 }
-
 .services-section h2 {
-  font-size: 2.5rem;
   margin-bottom: 1rem;
-  color: var(--accent);
 }
-
+.services-subtitle {
+  margin: -0.35rem auto 1rem;
+  color: var(--accent-soft);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
 .services-intro {
-  /* Introductory text */
-  font-size: 1.1rem;
-  color: var(--text-color);
-  margin-bottom: 3rem;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 650px;
+  margin: 0 auto 3.5rem;
+  color: var(--muted-text);
+  font-size: 1.08rem;
 }
-
 .services-grid {
-  /* Grid layout for service cards */
   display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.5rem;
-  max-width: 1200px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  max-width: 1180px;
   margin: 0 auto;
 }
 
@@ -45,94 +41,65 @@
 }
 
 .service-card {
-  /* Individual service card */
-  background: var(--card-bg, #fff);
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  text-align: left;
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border 0.3s ease,
-    background 0.3s ease;
-  opacity: 0;
-  transform: translateY(40px);
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  border: 1px solid transparent;
+  padding: 0.75rem 0.75rem 1.5rem;
+  color: var(--text-color);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
 }
-
 .service-card.show {
-  /* Show card with animation */
   opacity: 1;
   transform: translateY(0);
 }
-
 .service-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 6px 18px rgba(255, 165, 0, 0.4);
-  border: 1px solid #ff851b;
+  background: var(--surface-raised);
+  border-color: rgba(244, 201, 93, 0.5);
+  transform: translateY(-6px);
 }
-
 .service-card img {
-  /* Service image */
   width: 100%;
-  height: 160px;
+  height: 180px;
+  margin-bottom: 1.25rem;
+  border-radius: 9px;
   object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 1rem;
 }
-
 .service-card h3 {
-  font-size: 1.4rem;
-  margin-bottom: 0.75rem;
-  color: var(--accent);
+  margin: 0 0 0.65rem;
+  color: var(--accent-soft);
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.15;
 }
-
 .service-card p {
-  font-size: 1rem;
-  color: var(--text-color);
-  line-height: 1.5;
   flex-grow: 1;
+  margin: 0;
+  color: var(--muted-text);
+  font-size: 0.94rem;
+  line-height: 1.6;
 }
-
-/* Call-to-action button with floating animation */
 .services-cta {
-  display: inline-block;
   margin-top: 3rem;
-  padding: 0.9rem 2rem;
-  background: var(--accent);
-  color: #fff;
-  font-weight: bold;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: background 0.3s ease, transform 0.2s ease;
-  animation: floatButton 4s ease-in-out infinite;
 }
-
-.services-cta:hover {
-  background: #e67e00;
-  transform: scale(1.05);
-}
-
-@keyframes floatButton {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-6px);
+@media (max-width: 767px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
-
-:root[data-theme="light"],
-html[data-theme="light"],
-body[data-theme="light"] {
-  --card-bg: #fff;
-}
-
-:root[data-theme="dark"],
-html[data-theme="dark"],
-body[data-theme="dark"],
-.dark {
-  --card-bg: #1a1a1a;
+@media (max-width: 520px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+  .service-card img {
+    height: 210px;
+  }
 }

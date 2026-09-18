@@ -1,7 +1,5 @@
-// Hero section component for landing page
 import React from "react";
 import "../styles/Hero.css";
-import heroImage from "../assets/hero-img.png";
 
 const Hero = () => {
   return (

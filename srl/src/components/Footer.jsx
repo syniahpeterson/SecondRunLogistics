@@ -1,4 +1,3 @@
-// Footer with company info, social links, and copyright
 import React from "react";
 import {
   FaXTwitter,
@@ -8,13 +7,23 @@ import {
   FaLinkedinIn,
 } from "react-icons/fa6";
 import { FaSnapchatGhost } from "react-icons/fa";
+import logo from "../assets/logo.webp";
 import "../styles/Footer.css";
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
-        {/* Company contact and registration info */}
+        <div className="footer-brand">
+          <img
+            src={logo}
+            alt="Second Run Logistics Logo"
+            width="512"
+            height="512"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
         <div className="footer-info">
           <p>
             <strong>Phone:</strong>{" "}
@@ -35,7 +44,6 @@ const Footer = () => {
           </p>
         </div>
 
-        {/* Social media links */}
         <div className="footer-social">
           <a
             href="https://x.com/secondrun1986"
@@ -88,10 +96,8 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Divider line */}
       <div className="footer-divider" />
 
-      {/* Copyright notice */}
       <div className="footer-bottom">
         <p>
           © {new Date().getFullYear()} Second Run Logistics. All rights

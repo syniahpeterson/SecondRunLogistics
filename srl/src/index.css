@@ -1,25 +1,35 @@
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300..700&display=swap');
-
 :root {
-  --bg-color: #ffffff;
-  --text-color: #1a1a1a;
-  --secondary-bg: #f7f7f7;
-  --muted-text: #555555;
-  --accent: #ff851b;
+  --bg-color: #101416;
+  --surface: #171d1f;
+  --surface-raised: #20292b;
+  --text-color: #f2f4ef;
+  --muted-text: #aab6b4;
+  --accent: #ff8a3d;
+  --accent-soft: #ffb17b;
+  --line: rgba(242, 244, 239, 0.13);
+  --highlight: #f4c95d;
 }
 
-body.dark {
-  --bg-color: #121212;
-  --text-color: #ededed;
-  --secondary-bg: #1e1e1e;
-  --muted-text: #a0a0a0;
-  --accent: #ff851b;
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--bg-color);
   color: var(--text-color);
   margin: 0;
-  font-family: 'Comfortaa','Playfair Display', sans-serif;
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a,
+button,
+input,
+textarea {
+  font: inherit;
 }
