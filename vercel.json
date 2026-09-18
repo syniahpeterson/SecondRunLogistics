@@ -1,0 +1,6 @@
+{
+  "buildCommand": "npm --prefix srl install && npm --prefix srl run build",
+  "outputDirectory": "srl/dist",
+  "framework": "vite",
+  "rewrites": [{ "source": "/(.*)", "destination": "/index.html" }]
+}

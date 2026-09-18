@@ -1,6 +1,8 @@
 {
   "private": true,
   "scripts": {
-    "dev": "npm --prefix srl run dev"
+    "dev": "npm --prefix srl run dev",
+    "build": "npm --prefix srl run build",
+    "lint": "npm --prefix srl run lint"
   }
 }
