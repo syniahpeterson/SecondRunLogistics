@@ -1,12 +1,6 @@
 import React, { useRef, useEffect, useState } from "react";
 import "../styles/Contact.css";
 
-const emailJsConfig = {
-  serviceId: import.meta.env.VITE_EMAILJS_SERVICE_ID || "service_tk9zeu5",
-  templateId: import.meta.env.VITE_EMAILJS_TEMPLATE_ID || "template_ang9heb",
-  publicKey: import.meta.env.VITE_EMAILJS_PUBLIC_KEY || "xNmn0OU3An3Whz3np",
-};
-
 const Contact = () => {
   const form = useRef();
   const [status, setStatus] = useState("");
@@ -26,28 +20,38 @@ const Contact = () => {
     return () => observer.disconnect();
   }, []);
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
     setIsSending(true);
+    setStatus("");
 
-    import("@emailjs/browser")
-      .then(({ default: emailjs }) =>
-        emailjs.sendForm(
-          emailJsConfig.serviceId,
-          emailJsConfig.templateId,
-          form.current,
-          emailJsConfig.publicKey,
-        ),
-      )
-      .then(() => {
-        setStatus("✅ Message sent successfully!");
-        form.current.reset();
-      })
-      .catch((error) => {
-        setStatus("❌ Failed to send. Try again.");
-        console.error(error.text);
-      })
-      .finally(() => setIsSending(false));
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_name: form.current.user_name.value,
+          user_email: form.current.user_email.value,
+          message: form.current.message.value,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to send email.");
+      }
+
+      setStatus("✅ Message sent successfully!");
+      form.current.reset();
+    } catch (error) {
+      console.error(error);
+      setStatus("❌ Failed to send. Try again.");
+    } finally {
+      setIsSending(false);
+    }
   };
 
   return (
@@ -86,7 +90,7 @@ const Contact = () => {
           required
         />
         <button type="submit" className="contact-btn" disabled={isSending}>
-          Send
+          {isSending ? "Sending..." : "Send"}
         </button>
         {status && (
           <p className="status" aria-live="polite">
